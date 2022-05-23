@@ -12,12 +12,9 @@ $usuario = new Usuario(
     password_hash($_POST['txSenha'], PASSWORD_DEFAULT)
 );
 
-$email_usuario = $usuario->get_email();
-$senha_usuario = $usuario->get_senha();
-$dt_nasc = $usuario->get_data_nascimento();
 $confSenha = $_POST['txRepetirSenha'];
 
-if ($confSenha == $senha_usuario) {
+if (password_verify($confSenha, $usuario->get_senha())) {
     $stmt = $pdo->prepare("INSERT INTO tbusuarios (email, senha, data_nascimento) VALUES(?, ?, ?)");
     $stmt->bindValue(1, $usuario->get_email());
     $stmt->bindValue(2, $usuario->get_senha());
@@ -29,7 +26,6 @@ if ($confSenha == $senha_usuario) {
     $_SESSION['confSenha'] = false;
     header("location:../View/login-form.php");
 }
-
 
 
 ?>
