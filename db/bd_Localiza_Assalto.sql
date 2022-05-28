@@ -29,9 +29,10 @@ CREATE TABLE `tbusuarios` (
   `email` varchar(100) NOT NULL,
   `senha` varchar(100) NOT NULL,
   `data_nascimento` date NOT NULL,
+  `genero` varchar(50) NOT NULL,
   PRIMARY KEY (`id_usuarios`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +41,7 @@ CREATE TABLE `tbusuarios` (
 
 LOCK TABLES `tbusuarios` WRITE;
 /*!40000 ALTER TABLE `tbusuarios` DISABLE KEYS */;
-INSERT INTO `tbusuarios` VALUES (3,'teste@gmail.com','123Teste','1997-04-10');
+INSERT INTO `tbusuarios` VALUES (19,'teste@gmail.com','$2y$10$.itY2nUriSh3KBpeDxgDc.OIH/lwaX/fpu0YMBFogT9ic18MZ9m6G','2000-01-01','Masculino');
 /*!40000 ALTER TABLE `tbusuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01 19:59:26
+-- Dump completed on 2022-05-28 16:36:21

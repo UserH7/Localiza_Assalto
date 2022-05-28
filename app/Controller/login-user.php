@@ -21,17 +21,18 @@ $row = $stmt->fetch(PDO::FETCH_BOTH);
 
 
 if(password_verify($senha, $row['senha'])){
-    // Querie - pega a data de nascimento do usuario
-    $stmt_dt = $pdo->prepare("SELECT data_nascimento FROM tbusuarios WHERE email = ?");
+    // Querie - pega a data de nascimento do usuario e genero
+    $stmt_dt = $pdo->prepare("SELECT data_nascimento, genero FROM tbusuarios WHERE email = ?");
     $stmt_dt->bindValue(1, $email);
     $stmt_dt->execute();
     $row_dt = $stmt_dt->fetch(PDO::FETCH_BOTH);
 
     // Cria um Obj Usuario com informações do Usuario verificado
     $usuario = new Usuario(
-        $row_dt[0],
         $email,
-        $senha
+        $senha,
+        $row_dt[0],
+        $row_dt[1]
     );
 
     // Cria session com o Obj Usuario
